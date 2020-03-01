@@ -11,6 +11,10 @@ const apiClient = axios.create({
 export default {
   async getRepositories() {
     const response = await apiClient.get('/repositories');
-    return await response.data;
+    return response.data;
+  },
+  async getRepository(id) {
+    const response = await apiClient.get(`/repositories/${id}`);
+    return response.data;
   },
 };

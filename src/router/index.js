@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Search from '../views/Search.vue';
 import Bookmarks from '../views/Bookmarks.vue';
-import Repository from '../views/Repository.vue';
+import RepositoryDetail from '../views/RepositoryDetail.vue';
 
 Vue.use(VueRouter);
 
@@ -19,8 +19,8 @@ const routes = [
   },
   {
     path: '/repository/:id',
-    name: 'Repository',
-    component: Repository,
+    name: 'RepositoryDetail',
+    component: RepositoryDetail,
     props: true,
   },
 ];

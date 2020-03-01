@@ -1,11 +1,9 @@
 <template>
-  <!-- <router-link class="event-link" :to="{ name: 'event-show', params: { id: event.id } }"> -->
-  <div class="event-card -shadow">
-    <!-- <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span> -->
-    <h4 class="title">{{ repository.name }}</h4>
-    <!-- <BaseIcon name="users">{{ event.attendees.length }} attending</BaseIcon> -->
-  </div>
-  <!-- </router-link> -->
+  <router-link class="event-link" :to="{ name: 'RepositoryDetail', params: { id: repository.id } }">
+    <div class="event-card -shadow">
+      <h4 class="title">{{ repository.name }}</h4>
+    </div>
+  </router-link>
 </template>
 
 <script>

@@ -1,4 +1,4 @@
-    <template>
+<template>
   <div class="repository">
     <h1>Repository id: {{ id }}</h1>
   </div>

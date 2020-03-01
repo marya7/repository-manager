@@ -22,14 +22,8 @@ export default {
       repositories: [],
     };
   },
-  created() {
-    RepositoryService.getRepositories()
-      .then(response => {
-        this.repositories = response.data;
-      })
-      .catch(error => {
-        console.log('There was an error:', error.response);
-      });
+  async created() {
+    this.repositories = await RepositoryService.getRepositories();
   },
 };
 </script>

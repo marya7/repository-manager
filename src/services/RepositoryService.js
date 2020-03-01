@@ -9,7 +9,8 @@ const apiClient = axios.create({
 });
 
 export default {
-  getRepositories() {
-    return apiClient.get('/repositories');
+  async getRepositories() {
+    const response = await apiClient.get('/repositories');
+    return await response.data;
   },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="repositories">
     <h1>Repositories</h1>
     <RepositoryCard
       v-for="repository in repositories"

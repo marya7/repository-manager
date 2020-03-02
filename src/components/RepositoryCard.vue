@@ -1,9 +1,14 @@
 <template>
-  <router-link class="event-link" :to="{ name: 'RepositoryDetail', params: { id: repository.id } }">
-    <div class="event-card -shadow">
-      <h4 class="title">{{ repository.name }}</h4>
-    </div>
-  </router-link>
+  <v-container>
+    <router-link :to="{ name: 'RepositoryDetail', params: { id: repository.id } }">
+      <v-card>
+        <v-card-title> {{ repository.name }} </v-card-title>
+        <v-card-text>
+          {{ repository.full_name }}
+        </v-card-text>
+      </v-card>
+    </router-link>
+  </v-container>
 </template>
 
 <script>
@@ -13,24 +18,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.event-card {
-  padding: 20px;
-  margin-bottom: 24px;
-  transition: all 0.2s linear;
-  cursor: pointer;
-}
-.event-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2), 0 1px 15px 0 rgba(0, 0, 0, 0.19);
-}
-.event-card > .title {
-  margin: 0;
-}
-.event-link {
-  color: black;
-  text-decoration: none;
-  font-weight: 100;
-}
-</style>

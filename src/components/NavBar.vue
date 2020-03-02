@@ -1,39 +1,28 @@
 <template>
-  <div id="nav" class="nav">
-    <router-link :to="{ name: 'Search' }" class="brand">Repository manager</router-link>
-    <nav>
-      <router-link :to="{ name: 'Search' }">Search</router-link>|
-      <router-link :to="{ name: 'Bookmarks' }">Bookmarks</router-link>
-    </nav>
-  </div>
+  <v-app-bar app color="primary" dark>
+    <v-toolbar-title>Repository manager</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-btn v-for="link in links" :key="`${link.label}-header-link`" text rounded :to="link.url">
+      {{ link.label }}
+    </v-btn>
+  </v-app-bar>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      links: [
+        {
+          label: 'Repositories',
+          url: '/',
+        },
+        {
+          label: 'Bookmarks',
+          url: '/bookmarks',
+        },
+      ],
+    };
+  },
+};
 </script>
-
-<style scoped>
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-}
-.nav > .brand {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.5em;
-  color: #39b982;
-  text-decoration: none;
-}
-.nav .nav-item {
-  box-sizing: border-box;
-  margin: 0 5px;
-  color: rgba(0, 0, 0, 0.5);
-  text-decoration: none;
-}
-.nav .nav-item.router-link-exact-active {
-  color: #39b982;
-  border-bottom: solid 2px #39b982;
-}
-</style>

@@ -7,11 +7,7 @@
         <router-view />
       </v-content>
 
-      <v-footer absolute class="font-weight-medium">
-        <v-col class="text-center" cols="12">
-          <strong>Repository manager</strong>
-        </v-col>
-      </v-footer>
+      <v-footer app absolute color="deep-purple" height="35"> </v-footer>
     </div>
   </v-app>
 </template>

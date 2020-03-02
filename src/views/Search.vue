@@ -1,12 +1,12 @@
 <template>
-  <div class="repositories">
+  <v-container>
     <h1>Repositories</h1>
     <RepositoryCard
       v-for="repository in repositories"
       :key="repository.id"
       :repository="repository"
     />
-  </div>
+  </v-container>
 </template>
 
 <script>

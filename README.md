@@ -11,5 +11,3 @@ npm install
 ```
 npm run serve
 ```
-
-This application was created using Vue Mastery example application.

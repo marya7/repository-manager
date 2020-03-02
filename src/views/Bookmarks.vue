@@ -1,5 +1,5 @@
 <template>
-  <div class="bookmarks">
+  <v-container>
     <h1>This is bookmarks page</h1>
-  </div>
+  </v-container>
 </template>

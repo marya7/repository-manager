@@ -45,6 +45,7 @@ export default {
   },
   async created() {
     const { owner, name } = this.repository;
+
     this.stars = await RepositoryService.getStars(owner.login, name);
     this.forks = await RepositoryService.getForks(owner.login, name);
   },

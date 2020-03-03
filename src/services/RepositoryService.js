@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Base64 } from 'js-base64';
 
 const apiClient = axios.create({
   baseURL: `https://api.github.com`,
@@ -24,5 +25,10 @@ export default {
   async getForks(username, projectName) {
     const response = await apiClient.get(`/repos/${username}/${projectName}/forks`);
     return response.data.length;
+  },
+  async getReadme(username, projectName) {
+    const response = await apiClient.get(`/repos/${username}/${projectName}/contents/README.md`);
+    const content = await Base64.decode(response.data.content);
+    return content;
   },
 };

@@ -1,9 +1,10 @@
 <template>
   <v-container>
-    <h2>Repository details</h2>
+    <h1>Repository details</h1>
     <h4>{{ repository.name }}</h4>
   </v-container>
 </template>
+
 <script>
 import RepositoryService from '@/services/RepositoryService.js';
 

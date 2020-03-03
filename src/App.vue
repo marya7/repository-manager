@@ -22,3 +22,12 @@ export default {
   },
 };
 </script>
+
+<style>
+a {
+  text-decoration: none;
+}
+.container {
+  max-width: 600px;
+}
+</style>

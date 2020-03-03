@@ -17,4 +17,12 @@ export default {
     const response = await apiClient.get(`/repositories/${id}`);
     return response.data;
   },
+  async getStars(username, projectName) {
+    const response = await apiClient.get(`/repos/${username}/${projectName}/stargazers`);
+    return response.data.length;
+  },
+  async getForks(username, projectName) {
+    const response = await apiClient.get(`/repos/${username}/${projectName}/forks`);
+    return response.data.length;
+  },
 };

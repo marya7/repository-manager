@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1>Repositories</h1>
-    <pulse-loader v-if="loading" color="#673ab7"></pulse-loader>
+    <pulse-loader v-if="repositories.length === 0" color="#673ab7"></pulse-loader>
     <RepositoryCard
       v-else
       v-for="repository in repositories"
@@ -24,12 +24,10 @@ export default {
   data() {
     return {
       repositories: [],
-      loading: true,
     };
   },
   async created() {
     this.repositories = await RepositoryService.getRepositories();
-    this.loading = false;
   },
 };
 </script>

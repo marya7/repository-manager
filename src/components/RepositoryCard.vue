@@ -13,14 +13,20 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="pt-0 pb-1">
+            <v-col v-if="stars === null" class="pt-0 pb-1">
+              <pulse-loader color="grey" size="10px"></pulse-loader>
+            </v-col>
+            <v-col v-else class="pt-0 pb-1">
               <i class="fa fa-star pr-1"></i>
               {{ stars }}
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="pt-0 pb-1">
-              <i class="fa fa-code-fork pr-1"></i>
+            <v-col v-if="forks === null" class="pt-0 pb-1">
+              <pulse-loader color="grey" size="10px"></pulse-loader>
+            </v-col>
+            <v-col v-else class="pt-0 pb-1">
+              <i class="fa fa-code-fork pr-2"></i>
               {{ forks }}
             </v-col>
           </v-row>
@@ -32,8 +38,12 @@
 
 <script>
 import RepositoryService from '@/services/RepositoryService.js';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
 export default {
+  components: {
+    PulseLoader,
+  },
   props: {
     repository: Object,
   },

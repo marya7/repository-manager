@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <h1>Repository details</h1>
-    <p v-if="convertedReadme" v-html="convertedReadme">{{ convertedReadme }}</p>
+    <p v-if="loading">Loading</p>
+    <p v-else-if="convertedReadme" v-html="convertedReadme">{{ convertedReadme }}</p>
     <p v-else>There is no README file to display.</p>
   </v-container>
 </template>
@@ -15,6 +16,7 @@ export default {
   data() {
     return {
       convertedReadme: null,
+      loading: true,
     };
   },
   async created() {
@@ -25,6 +27,8 @@ export default {
       const converter = new showdown.Converter();
       this.convertedReadme = converter.makeHtml(readme);
     }
+
+    this.loading = false;
   },
 };
 </script>

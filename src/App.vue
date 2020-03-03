@@ -30,4 +30,8 @@ a {
 .container {
   max-width: 600px;
 }
+h1 {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
 </style>

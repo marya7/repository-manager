@@ -1,7 +1,9 @@
 <template>
   <v-container>
     <h1>Repositories</h1>
+    <pulse-loader v-if="loading" color="#673ab7"></pulse-loader>
     <RepositoryCard
+      v-else
       v-for="repository in repositories"
       :key="repository.id"
       :repository="repository"
@@ -12,18 +14,22 @@
 <script>
 import RepositoryCard from '@/components/RepositoryCard.vue';
 import RepositoryService from '@/services/RepositoryService.js';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
 export default {
   components: {
     RepositoryCard,
+    PulseLoader,
   },
   data() {
     return {
       repositories: [],
+      loading: true,
     };
   },
   async created() {
     this.repositories = await RepositoryService.getRepositories();
+    this.loading = false;
   },
 };
 </script>

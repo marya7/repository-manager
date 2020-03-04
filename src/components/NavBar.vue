@@ -3,7 +3,6 @@
     <v-toolbar-title>
       Repository manager
     </v-toolbar-title>
-
     <v-spacer></v-spacer>
     <v-btn v-for="link in links" :key="`${link.label}-header-link`" text rounded :to="link.url">
       {{ link.label }}

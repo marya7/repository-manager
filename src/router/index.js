@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Repositories from '../views/Repositories.vue';
-import Bookmarks from '../views/Bookmarks.vue';
-import RepositoryDetail from '../views/RepositoryDetail.vue';
 
 Vue.use(VueRouter);
 
@@ -15,12 +13,12 @@ const routes = [
   {
     path: '/bookmarks',
     name: 'Bookmarks',
-    component: Bookmarks,
+    component: () => import('../views/Bookmarks.vue'),
   },
   {
     path: '/repository/:id',
     name: 'RepositoryDetail',
-    component: RepositoryDetail,
+    component: () => import('../views/RepositoryDetail.vue'),
     props: true,
   },
 ];

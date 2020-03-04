@@ -2,11 +2,9 @@
   <v-app>
     <div id="app">
       <NavBar />
-
       <v-content>
         <router-view />
       </v-content>
-
       <v-footer app absolute color="deep-purple" height="35"> </v-footer>
     </div>
   </v-app>

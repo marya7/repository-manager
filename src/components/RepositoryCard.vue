@@ -83,8 +83,8 @@ export default {
       stars: null,
       forks: null,
       snackbarText: null,
+      bookmark: null,
       snackbar: false,
-      bookmark: {},
     };
   },
   methods: {

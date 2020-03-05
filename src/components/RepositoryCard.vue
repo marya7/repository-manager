@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <!-- <router-link :to="{ name: 'RepositoryDetail', params: { id: repository.id } }"> -->
     <v-card v-model="bookmark">
       <v-card-title>
         {{ repository.name }}
@@ -30,21 +29,23 @@
             {{ forks }}
           </v-col>
         </v-row>
+        <v-btn @click="showDetails(repository.id)" icon color="#673ab7" class="info-button button">
+          <i class="fas fa-info-circle fa-lg"></i>
+        </v-btn>
         <v-btn
           v-if="isBookmark(repository)"
           @click="removeBookmark(repository)"
           icon
           color="#673ab7"
-          size="50px"
+          class="button"
         >
           <i class="fas fa-bookmark fa-lg"></i>
         </v-btn>
-        <v-btn v-else @click="addBookmark(repository)" icon color="#673ab7" size="50px">
+        <v-btn v-else @click="addBookmark(repository)" icon color="#673ab7" class="button">
           <i class="far fa-bookmark fa-lg"></i>
         </v-btn>
       </v-card-text>
     </v-card>
-    <!-- </router-link> -->
   </v-container>
 </template>
 
@@ -78,6 +79,12 @@ export default {
     isBookmark(bookmark) {
       return !!this.$store.state.bookmarks.find(b => b.id === bookmark.id);
     },
+    showDetails(id) {
+      this.$router.push({
+        name: 'RepositoryDetail',
+        params: { id },
+      });
+    },
   },
   async created() {
     const { owner, name } = this.repository;
@@ -87,3 +94,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.button {
+  float: right;
+  margin-top: -80px;
+}
+.info-button {
+  margin-right: 35px;
+}
+</style>

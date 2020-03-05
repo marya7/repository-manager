@@ -6,7 +6,7 @@
     </v-btn>
     <pulse-loader v-if="loading" color="#673ab7"></pulse-loader>
     <p v-else-if="convertedReadme" v-html="convertedReadme">{{ convertedReadme }}</p>
-    <p v-else>There is no README file to display.</p>
+    <p v-else>There is no README.md file to display.</p>
   </v-container>
 </template>
 

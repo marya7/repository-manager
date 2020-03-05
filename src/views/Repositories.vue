@@ -23,8 +23,8 @@
 
 <script>
 import RepositoryCard from '@/components/RepositoryCard.vue';
-import RepositoryService from '@/services/RepositoryService.js';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -33,7 +33,6 @@ export default {
   },
   data() {
     return {
-      repositories: [],
       searchQuery: null,
     };
   },
@@ -47,9 +46,10 @@ export default {
         return this.repositories;
       }
     },
+    ...mapState(['repositories']),
   },
   async created() {
-    this.repositories = await RepositoryService.getRepositories();
+    this.$store.dispatch('fetchRepositories', {});
   },
 };
 </script>

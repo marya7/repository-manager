@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
+import RepositoriesService from '@/services/RepositoryService.js';
 
 Vue.use(Vuex);
 
@@ -8,6 +9,7 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     bookmarks: [],
+    repositories: [],
   },
   mutations: {
     ADD_BOOKMARK(state, bookmark) {
@@ -18,6 +20,9 @@ export default new Vuex.Store({
         return b.id !== bookmark.id;
       });
     },
+    SET_REPOSITORIES(state, repositories) {
+      state.repositories = repositories;
+    },
   },
   actions: {
     addBookmark({ commit }, bookmark) {
@@ -25,6 +30,15 @@ export default new Vuex.Store({
     },
     removeBookmark({ commit }, bookmark) {
       commit('REMOVE_BOOKMARK', bookmark);
+    },
+    fetchRepositories({ commit }) {
+      RepositoriesService.getRepositories()
+        .then(response => {
+          commit('SET_REPOSITORIES', response);
+        })
+        .catch(error => {
+          console.error('There was an error:', error.response);
+        });
     },
   },
 });

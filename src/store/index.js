@@ -4,8 +4,17 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  state: {
+    bookmarks: [],
+  },
+  mutations: {
+    ADD_BOOKMARK(state, bookmark) {
+      state.bookmarks.push(bookmark);
+    },
+  },
+  actions: {
+    addBookmark({ commit }, bookmark) {
+      commit('ADD_BOOKMARK', bookmark);
+    },
+  },
 });

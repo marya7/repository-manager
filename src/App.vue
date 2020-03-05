@@ -2,7 +2,7 @@
   <v-app>
     <div id="app">
       <NavBar />
-      <v-content>
+      <v-content class="content">
         <router-view />
       </v-content>
       <v-footer app absolute color="deep-purple" height="35"> </v-footer>
@@ -31,5 +31,8 @@ a {
 h1 {
   margin-bottom: 15px;
   margin-top: 15px;
+}
+.content {
+  margin-bottom: 35px;
 }
 </style>

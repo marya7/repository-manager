@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card v-model="bookmark">
+    <v-card>
       <v-card-title>
         {{ repository.name }}
       </v-card-title>
@@ -84,21 +84,18 @@ export default {
       stars: null,
       forks: null,
       snackbarText: null,
-      bookmark: null,
       snackbar: false,
     };
   },
   methods: {
-    addBookmark(bookmark) {
-      this.bookmark = bookmark;
-      this.$store.dispatch('addBookmark', this.bookmark);
+    addBookmark(repository) {
+      this.$store.dispatch('addBookmark', repository);
     },
-    removeBookmark(bookmark) {
-      this.bookmark = bookmark;
-      this.$store.dispatch('removeBookmark', this.bookmark);
+    removeBookmark(repository) {
+      this.$store.dispatch('removeBookmark', repository);
     },
-    isBookmark(bookmark) {
-      return !!this.$store.state.bookmark.bookmarks.find(b => b.id === bookmark.id);
+    isBookmark(repository) {
+      return !!this.$store.state.bookmark.bookmarks.find(b => b.id === repository.id);
     },
     showDetails(id) {
       this.$router.push({

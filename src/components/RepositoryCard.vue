@@ -34,16 +34,34 @@
         </v-btn>
         <v-btn
           v-if="isBookmark(repository)"
-          @click="removeBookmark(repository)"
+          @click="
+            removeBookmark(repository);
+            displaySnackbar('Bookmark has been removed');
+          "
           icon
           color="#673ab7"
           class="button"
         >
           <i class="fas fa-bookmark fa-lg"></i>
         </v-btn>
-        <v-btn v-else @click="addBookmark(repository)" icon color="#673ab7" class="button">
+        <v-btn
+          v-else
+          @click="
+            addBookmark(repository);
+            displaySnackbar('Bookmark has been added');
+          "
+          icon
+          color="#673ab7"
+          class="button"
+        >
           <i class="far fa-bookmark fa-lg"></i>
         </v-btn>
+        <v-snackbar v-model="snackbar">
+          {{ snackbarText }}
+          <v-btn color="pink" text @click="snackbar = false">
+            Close
+          </v-btn>
+        </v-snackbar>
       </v-card-text>
     </v-card>
   </v-container>
@@ -64,6 +82,8 @@ export default {
     return {
       stars: null,
       forks: null,
+      snackbarText: null,
+      snackbar: false,
       bookmark: {},
     };
   },
@@ -84,6 +104,10 @@ export default {
         name: 'RepositoryDetail',
         params: { id },
       });
+    },
+    displaySnackbar(text) {
+      this.snackbar = true;
+      this.snackbarText = text;
     },
   },
   async created() {

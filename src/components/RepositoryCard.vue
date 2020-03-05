@@ -30,7 +30,18 @@
             {{ forks }}
           </v-col>
         </v-row>
-        <v-btn @click="addBookmark(repository)">add bookmark</v-btn>
+        <v-btn
+          v-if="isBookmark(repository)"
+          @click="removeBookmark(repository)"
+          icon
+          color="#673ab7"
+          size="50px"
+        >
+          <i class="fas fa-bookmark fa-lg"></i>
+        </v-btn>
+        <v-btn v-else @click="addBookmark(repository)" icon color="#673ab7" size="50px">
+          <i class="far fa-bookmark fa-lg"></i>
+        </v-btn>
       </v-card-text>
     </v-card>
     <!-- </router-link> -->
@@ -59,6 +70,13 @@ export default {
     addBookmark(bookmark) {
       this.bookmark = bookmark;
       this.$store.dispatch('addBookmark', this.bookmark);
+    },
+    removeBookmark(bookmark) {
+      this.bookmark = bookmark;
+      this.$store.dispatch('removeBookmark', this.bookmark);
+    },
+    isBookmark(bookmark) {
+      return !!this.$store.state.bookmarks.find(b => b.id === bookmark.id);
     },
   },
   async created() {

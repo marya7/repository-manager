@@ -70,6 +70,7 @@
 <script>
 import RepositoryService from '@/services/RepositoryService.js';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
@@ -97,7 +98,7 @@ export default {
       this.$store.dispatch('removeBookmark', this.bookmark);
     },
     isBookmark(bookmark) {
-      return !!this.$store.state.bookmarks.find(b => b.id === bookmark.id);
+      return !!this.$store.state.bookmark.bookmarks.find(b => b.id === bookmark.id);
     },
     showDetails(id) {
       this.$router.push({
@@ -109,6 +110,7 @@ export default {
       this.snackbar = true;
       this.snackbarText = text;
     },
+    ...mapActions('bookmark', ['addBookmark', 'removeBookmark']),
   },
   async created() {
     const { owner, name } = this.repository;

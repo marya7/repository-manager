@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     bookmarks() {
-      return this.$store.state.bookmarks;
+      return this.$store.state.bookmark.bookmarks;
     },
   },
 };

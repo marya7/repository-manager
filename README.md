@@ -17,3 +17,4 @@ Requirements:
 - bookmarks persist on a page refresh
 - display toast message when adding/removing bookmarks
 - display loader on long requests
+- display badge on navbar to show bookmarks count

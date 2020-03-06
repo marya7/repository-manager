@@ -5,12 +5,14 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn v-for="link in links" :key="`${link.label}-header-link`" text rounded :to="link.url">
-      {{ link.label }}
-    </v-btn>
-    <v-btn text rounded to="/bookmarks">
-      <v-badge color="pink" :content="bookmark.bookmarks.length">
-        Bookmarks
+      <v-badge
+        v-if="link.hasBadge && bookmark.bookmarks.length > 0"
+        color="pink"
+        :content="bookmark.bookmarks.length"
+      >
+        {{ link.label }}
       </v-badge>
+      <div v-else>{{ link.label }}</div>
     </v-btn>
   </v-app-bar>
 </template>
@@ -25,6 +27,11 @@ export default {
         {
           label: 'Repositories',
           url: '/',
+        },
+        {
+          label: 'Bookmarks',
+          url: '/bookmarks',
+          hasBadge: true,
         },
       ],
     };

@@ -6,6 +6,7 @@ const apiClient = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
+    Authorization: 'token 79026b1c302cd148e1cb900ad1852f685016abd7',
   },
 });
 

@@ -1,11 +1,7 @@
 <template>
   <v-container>
     <h1 class="mx-3">Bookmarks</h1>
-    <RepositoryCard
-      v-for="bookmark in bookmark.bookmarks"
-      :key="bookmark.id"
-      :repository="bookmark"
-    />
+    <RepositoryCard v-for="bookmark in bookmarks" :key="bookmark.id" :repository="bookmark" />
   </v-container>
 </template>
 
@@ -17,8 +13,8 @@ export default {
   components: {
     RepositoryCard,
   },
-  computed: {
-    ...mapState(['bookmark']),
-  },
+  computed: mapState({
+    bookmarks: state => state.bookmark.bookmarks,
+  }),
 };
 </script>

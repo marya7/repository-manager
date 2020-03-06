@@ -6,9 +6,9 @@
     <v-spacer></v-spacer>
     <v-btn v-for="link in links" :key="`${link.label}-header-link`" text rounded :to="link.url">
       <v-badge
-        v-if="link.hasBadge && bookmark.bookmarks.length > 0"
+        v-if="link.hasBadge && bookmarks.length > 0"
         color="pink"
-        :content="bookmark.bookmarks.length"
+        :content="bookmarks.length"
       >
         {{ link.label }}
       </v-badge>
@@ -36,8 +36,8 @@ export default {
       ],
     };
   },
-  computed: {
-    ...mapState(['bookmark']),
-  },
+  computed: mapState({
+    bookmarks: state => state.bookmark.bookmarks,
+  }),
 };
 </script>

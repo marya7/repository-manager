@@ -53,7 +53,7 @@ export default {
     ...mapState(['repository']),
   },
   async created() {
-    this.$store.dispatch('fetchRepositories', {});
+    this.$store.dispatch('fetchRepositories');
   },
 };
 </script>

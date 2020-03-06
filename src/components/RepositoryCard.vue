@@ -87,9 +87,9 @@ export default {
       snackbar: false,
     };
   },
-  computed: {
-    ...mapState(['bookmark']),
-  },
+  computed: mapState({
+    bookmarks: state => state.bookmark.bookmarks,
+  }),
   methods: {
     addBookmark(repository) {
       this.$store.dispatch('addBookmark', repository);
@@ -98,7 +98,7 @@ export default {
       this.$store.dispatch('removeBookmark', repository);
     },
     isBookmark(repository) {
-      return !!this.bookmark.bookmarks.find(b => b.id === repository.id);
+      return !!this.bookmarks.find(b => b.id === repository.id);
     },
     showDetails(id) {
       this.$router.push({
@@ -114,7 +114,6 @@ export default {
   },
   async created() {
     const { owner, name } = this.repository;
-
     this.stars = await RepositoryService.getStars(owner.login, name);
     this.forks = await RepositoryService.getForks(owner.login, name);
   },

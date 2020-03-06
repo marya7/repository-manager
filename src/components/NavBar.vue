@@ -7,10 +7,17 @@
     <v-btn v-for="link in links" :key="`${link.label}-header-link`" text rounded :to="link.url">
       {{ link.label }}
     </v-btn>
+    <v-btn text rounded to="/bookmarks">
+      <v-badge color="pink" :content="bookmark.bookmarks.length">
+        Bookmarks
+      </v-badge>
+    </v-btn>
   </v-app-bar>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   data() {
     return {
@@ -19,12 +26,11 @@ export default {
           label: 'Repositories',
           url: '/',
         },
-        {
-          label: 'Bookmarks',
-          url: '/bookmarks',
-        },
       ],
     };
+  },
+  computed: {
+    ...mapState(['bookmark']),
   },
 };
 </script>

@@ -9,8 +9,8 @@ Requirements:
 - display repositories
 - search repositories by repository name
 - display detail view when clicked on info icon
-- if readme exists, display it as markdown in detail view
-- detail view has link to actual github page
+- if readme exists, display it as a markdown in detail view
+- detail view has link to an actual github page
 - bookmarks and repositories are on separate routes
 - add and remove bookmarks
 - bookmarks are stored in vuex store
